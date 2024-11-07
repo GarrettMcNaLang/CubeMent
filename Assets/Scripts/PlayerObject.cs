@@ -11,7 +11,7 @@ public class PlayerObject : MonoBehaviour
 
     Vector2 Direction;
 
-
+    public bool isStill;
 
     bool CanPress;
 
@@ -60,6 +60,8 @@ public class PlayerObject : MonoBehaviour
             {
                 DetermineDirection(Controls.RIGHT);
             }
+
+            
         }
         
            
@@ -81,7 +83,7 @@ public class PlayerObject : MonoBehaviour
 
         var isMoving = rb.linearVelocity.sqrMagnitude;
 
-        Debug.Log(isMoving);
+        //Debug.Log(isMoving);
 
         
 
@@ -90,6 +92,7 @@ public class PlayerObject : MonoBehaviour
 
     public void DetermineDirection(Controls CurrInput)
     {
+        isStill = false;
         CanPress = false;
 
         switch(CurrInput)
@@ -119,6 +122,7 @@ public class PlayerObject : MonoBehaviour
         {
             Direction = Vector2.zero;
             CanPress = true;
+            isStill = true;
         }
     }
 
