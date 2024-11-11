@@ -9,6 +9,6 @@ public class PlayerSpawnSpace : MonoBehaviour
     private void OnEnable()
     {
         
-        Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity);
+        
     }
 }
