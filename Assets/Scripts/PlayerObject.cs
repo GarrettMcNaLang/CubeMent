@@ -1,9 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerObject : MonoBehaviour
 {
 
-    public string VelocityResetTag = "StaticBorders";
+    public static string VelocityResetTag = "StaticBorders";
 
     Rigidbody2D rb;
 
@@ -14,6 +18,21 @@ public class PlayerObject : MonoBehaviour
     public bool isStill;
 
     bool CanPress;
+
+    [SerializeField]
+    string Stoppername;
+
+    [SerializeField]
+    StopperDic StopperDictionary;
+
+    [SerializeField]
+    public StopperObj[] Stoppers;
+
+    [SerializeField]
+    Dictionary<string, GameObject> StopperDict;
+    
+  
+
 
     public enum Controls
     {
@@ -30,6 +49,9 @@ public class PlayerObject : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        StopperDict = StopperDictionary.ConvertToDictionary();
+
+      
     }
 
     void OnEnable()
@@ -81,7 +103,7 @@ public class PlayerObject : MonoBehaviour
 
         rb.linearVelocity = Direction;
 
-        var isMoving = rb.linearVelocity.sqrMagnitude;
+        //var isMoving = rb.linearVelocity.sqrMagnitude;
 
         //Debug.Log(isMoving);
 
@@ -100,21 +122,31 @@ public class PlayerObject : MonoBehaviour
             case Controls.UP:
                 {
                     Direction = Vector2.up * PlayerSpeed; break;
+                    
                 }
             case Controls.DOWN:
                 {
                     Direction = Vector2.down * PlayerSpeed; break;
+                   
                 }
             case Controls.LEFT:
                 {
                     Direction = Vector2.left * PlayerSpeed; break;
+                    
                 }
             case Controls.RIGHT:
                 {
                     Direction = Vector2.right * PlayerSpeed; break;
+                   
                 }
+
+            
+            
         }
     }
+
+    
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -126,4 +158,31 @@ public class PlayerObject : MonoBehaviour
         }
     }
 
+}
+[Serializable]
+public class StopperDic
+{
+    [SerializeField]
+    public StopperObj[] Stoppers;
+
+    public Dictionary<string, GameObject> ConvertToDictionary()
+    {
+        Dictionary<string, GameObject> newDic = new Dictionary<string, GameObject>();
+
+        foreach(var Stp in Stoppers)
+        {
+            newDic.Add(Stp.name, Stp.Stopper);
+        }
+
+        return newDic;
+    }
+}
+
+[Serializable]
+public class StopperObj
+{
+    [SerializeField]
+    public string name;
+    [SerializeField]
+    public GameObject Stopper;
 }
