@@ -13,11 +13,13 @@ public class PlayerObject : MonoBehaviour
 
     public float PlayerSpeed;
 
-    Vector2 Direction;
+    public Vector2 Direction;
 
     public bool isStill;
 
-    bool CanPress;
+    public bool CanPress;
+
+    string EnableThis;
 
     [SerializeField]
     string Stoppername;
@@ -25,8 +27,7 @@ public class PlayerObject : MonoBehaviour
     [SerializeField]
     StopperDic StopperDictionary;
 
-    [SerializeField]
-    public StopperObj[] Stoppers;
+   
 
     [SerializeField]
     Dictionary<string, GameObject> StopperDict;
@@ -69,6 +70,7 @@ public class PlayerObject : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 DetermineDirection(Controls.UP);
+                
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
@@ -121,22 +123,33 @@ public class PlayerObject : MonoBehaviour
         {
             case Controls.UP:
                 {
-                    Direction = Vector2.up * PlayerSpeed; break;
+
+                    Direction = Vector2.up * PlayerSpeed;
+                    DisableExceptOne("Up");
+                    break;
+                    
                     
                 }
             case Controls.DOWN:
                 {
-                    Direction = Vector2.down * PlayerSpeed; break;
+                    Direction = Vector2.down * PlayerSpeed;
+                    DisableExceptOne("Down");
+                    break;
                    
                 }
             case Controls.LEFT:
                 {
-                    Direction = Vector2.left * PlayerSpeed; break;
+                    Direction = Vector2.left * PlayerSpeed;
+                    DisableExceptOne("Left");
+                    break;
+
                     
                 }
             case Controls.RIGHT:
                 {
-                    Direction = Vector2.right * PlayerSpeed; break;
+                    Direction = Vector2.right * PlayerSpeed;
+                    DisableExceptOne("Right");
+                    break;
                    
                 }
 
@@ -145,18 +158,13 @@ public class PlayerObject : MonoBehaviour
         }
     }
 
-    
+    public void DisableExceptOne(String EnableThis) 
+    {
+        Debug.LogFormat("Trigger {0} Activated", EnableThis);
+        StopperDict[EnableThis].SetActive(true);
+    }
    
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == VelocityResetTag)
-        {
-            Direction = Vector2.zero;
-            CanPress = true;
-            isStill = true;
-        }
-    }
 
 }
 [Serializable]
