@@ -2,6 +2,18 @@ using UnityEngine;
 
 public class AbsoluteOneWay : OneWayLogicScript
 {
+  public GameObject spriteRenderer;
+
+ 
+
+    private void Awake()
+    {
+        
+
+        
+
+        
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +36,8 @@ public class AbsoluteOneWay : OneWayLogicScript
                     DOWN.enabled = false;
                     LEFT.enabled = false;
                     RIGHT.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * 0f);
+
                     break;
                 }
             case Direction.Down:
@@ -32,6 +46,7 @@ public class AbsoluteOneWay : OneWayLogicScript
                     UP.enabled = false;
                     LEFT.enabled = false;
                     RIGHT.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * 180f);
                     break;
                 }
             case Direction.Left:
@@ -40,6 +55,7 @@ public class AbsoluteOneWay : OneWayLogicScript
                     UP.enabled = false;
                     DOWN.enabled = false;
                     RIGHT.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * -90f);
                     break;
                 }
             case Direction.Right:
@@ -48,6 +64,7 @@ public class AbsoluteOneWay : OneWayLogicScript
                     DOWN.enabled = false;
                     LEFT.enabled = false;
                     UP.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * 90f);
                     break;
                 }
         }

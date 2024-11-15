@@ -32,7 +32,7 @@ public class StopPlayerScript : MonoBehaviour
             Playerparent.CanPress = true;
             Playerparent.isStill = true;
 
-            
+            this.gameObject.SetActive(false);
         }
 
         
