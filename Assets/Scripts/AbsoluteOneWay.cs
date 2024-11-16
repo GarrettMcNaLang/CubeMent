@@ -33,7 +33,7 @@ public class AbsoluteOneWay : OneWayLogicScript
             case Direction.Up:
                 {
                     Debug.Log("Player Should be moving Down");
-                    DOWN.enabled = false;
+                    UP.enabled = false;
                     LEFT.enabled = false;
                     RIGHT.enabled = false;
                     spriteRenderer.transform.Rotate(Vector3.forward * 0f);
@@ -43,7 +43,7 @@ public class AbsoluteOneWay : OneWayLogicScript
             case Direction.Down:
                 {
                     Debug.Log("Player should be moving UP");
-                    UP.enabled = false;
+                    DOWN.enabled = false;
                     LEFT.enabled = false;
                     RIGHT.enabled = false;
                     spriteRenderer.transform.Rotate(Vector3.forward * 180f);
@@ -54,17 +54,17 @@ public class AbsoluteOneWay : OneWayLogicScript
                     Debug.Log("Player should be moving Right");
                     UP.enabled = false;
                     DOWN.enabled = false;
-                    RIGHT.enabled = false;
-                    spriteRenderer.transform.Rotate(Vector3.forward * -90f);
+                    LEFT.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * 90f);
                     break;
                 }
             case Direction.Right:
                 {
                     Debug.Log("Player should be moving Left");
                     DOWN.enabled = false;
-                    LEFT.enabled = false;
+                    RIGHT.enabled = false;
                     UP.enabled = false;
-                    spriteRenderer.transform.Rotate(Vector3.forward * 90f);
+                    spriteRenderer.transform.Rotate(Vector3.forward * -90f);
                     break;
                 }
         }

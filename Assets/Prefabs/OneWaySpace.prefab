@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1666485955799993325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.001, y: 0.506, z: 359.11252}
+  m_LocalPosition: {x: 0.001, y: 0.519, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70,8 +70,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.34642196, y: 0}
-  - {x: 0.40045875, y: 0}
+  - {x: 0.020247221, y: 0.038423777}
+  - {x: 0.021448672, y: -0.95822525}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 3416042615319043904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.001, y: -0.505, z: 359.11252}
+  m_LocalPosition: {x: 0.001, y: -0.543, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,8 +158,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.3634863, y: 0}
-  - {x: 0.36633033, y: 0}
+  - {x: 0.0047090054, y: 0.9001701}
+  - {x: 0.011444271, y: -0.018704176}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 4676217997948530727}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.506, y: 0.002, z: 359.11252}
+  m_LocalPosition: {x: 0.573, y: 0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,8 +246,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.35495427, y: 0.002844018}
-  - {x: 0.346422, y: 0.002844173}
+  - {x: 0.0038913786, y: -0.037814077}
+  - {x: -0.0046298876, y: 1.0194273}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 9038945193014463721}
   m_Layer: 0
   m_Name: OneWaySpace
-  m_TagString: PathBlockEntity
+  m_TagString: StaticBorders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,7 +319,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a03db40b2008e04396862e83ad2e351, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -421,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 7229162375423645860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.503, y: 0.002, z: 359.11252}
+  m_LocalPosition: {x: -0.558, y: 0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -464,8 +464,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.36064222, y: -0.000000016298145}
-  - {x: 0.34073403, y: 0.000000018626451}
+  - {x: 0.014321238, y: 0.009789644}
+  - {x: 0.02428621, y: -1.0058424}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

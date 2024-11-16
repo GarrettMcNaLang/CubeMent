@@ -28,6 +28,11 @@ public abstract class OneWayLogicScript : MonoBehaviour
 
     public abstract void SetDirectionFunc(Direction dir);
 
+    private void OnEnable()
+    {
+        SetDirectionFunc(SetDirection);
+    }
+
 
 
 
