@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 1093895807037796334}
   - component: {fileID: 8746735468398615939}
   - component: {fileID: 505814353109071336}
+  - component: {fileID: 4107882366941335972}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -356,6 +357,42 @@ MonoBehaviour:
       Stopper: {fileID: 7563137717558782085}
     - name: Right
       Stopper: {fileID: 3933268295775247389}
+--- !u!58 &4107882366941335972
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166624508965804777}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0021733344, y: -0.0014669299}
+  m_Radius: 0.48359817
 --- !u!1 &8527168694497470884
 GameObject:
   m_ObjectHideFlags: 0

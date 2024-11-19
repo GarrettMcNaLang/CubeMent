@@ -19,7 +19,7 @@ public class PlayerObject : MonoBehaviour
 
     public bool CanPress;
 
-    string EnableThis;
+   
 
     [SerializeField]
     string Stoppername;
@@ -57,9 +57,17 @@ public class PlayerObject : MonoBehaviour
 
     void OnEnable()
     {
-        
+       
 
         CanPress = true;
+
+        //GM.GetActivePlayer(this);
+    }
+
+    private void OnDisable()
+    {
+        transform.position = new Vector3(0, 0, 0.6f);
+        Debug.Log("Player should have returned to spawn");
     }
 
     // Update is called once per frame
@@ -164,7 +172,15 @@ public class PlayerObject : MonoBehaviour
         StopperDict[EnableThis].SetActive(true);
     }
    
+    public void InformGM(PlayerObject playerObj)
+    {
+        
+    }
+    
+    public void ResetFunction()
+    {
 
+    }
 
 }
 [Serializable]
