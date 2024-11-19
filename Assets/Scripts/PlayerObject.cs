@@ -52,7 +52,7 @@ public class PlayerObject : MonoBehaviour
 
         StopperDict = StopperDictionary.ConvertToDictionary();
 
-      
+        
     }
 
     void OnEnable()
@@ -61,12 +61,12 @@ public class PlayerObject : MonoBehaviour
 
         CanPress = true;
 
-        //GM.GetActivePlayer(this);
+        GM.GetActivePlayer(this);
     }
 
     private void OnDisable()
     {
-        transform.position = new Vector3(0, 0, 0.6f);
+        
         Debug.Log("Player should have returned to spawn");
     }
 
@@ -172,14 +172,14 @@ public class PlayerObject : MonoBehaviour
         StopperDict[EnableThis].SetActive(true);
     }
    
-    public void InformGM(PlayerObject playerObj)
-    {
-        
-    }
-    
     public void ResetFunction()
     {
-
+        this.gameObject.SetActive(false);
+        Direction = Vector2.zero;
+        CanPress = true;
+        isStill = true;
+        var spawner = GM.Instance.GetCurrentSpawner();
+        this.gameObject.transform.position = spawner;
     }
 
 }

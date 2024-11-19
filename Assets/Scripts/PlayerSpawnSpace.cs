@@ -3,19 +3,16 @@ using UnityEngine.Tilemaps;
 
 public class PlayerSpawnSpace : MonoBehaviour
 {
-    public GameObject playerPrefab;
+    
 
     public GameObject spawnPoint;
 
    
 
-
-    
-    private void OnEnable()
+    public void SpawnerFunction(PlayerObject playerObject)
     {
-        
-            Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity);
-        
-       
+        playerObject.transform.position = spawnPoint.transform.position;
     }
+    
+   
 }

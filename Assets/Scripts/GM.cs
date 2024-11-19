@@ -23,7 +23,7 @@ public class GM : MonoBehaviour
 
     public static GM Instance;
 
-    
+
     public static Action OnPlayerDeath;
 
     public static Action<PlayerObject> GetActivePlayer;
@@ -32,13 +32,19 @@ public class GM : MonoBehaviour
 
     public Button NextLevelButton;
 
-    
+    public enum Levels 
+    {One, Two, Three };
 
-    
+    public Levels Currlevel;
 
-    public GameObject[] Spawners;
+    [HideInInspector]
+    public PlayerSpawnSpace CurrSpawner;
+    [HideInInspector]
+    public GameObject CurrCameraPosition;
 
-    public PlayerObject CurrPlayer;
+    PlayerObject CurrPlayer;
+
+    public PlayerObject PlayerObjectPrefab;
     
 
     private void Awake()
@@ -50,21 +56,29 @@ public class GM : MonoBehaviour
         
 
         NewLevelsContainer = ToConvert.ConvertToDictionaryLevels();
+
+        CurrPlayer = Instantiate(PlayerObjectPrefab);
+
+        
     }
 
     private void OnEnable()
     {
         OnPlayerDeath += InitiateGameOver;
 
-        GetActivePlayer += GetCurrentPlayer;
+        GetActivePlayer += ActivatePlayer;
+
+        LevelTransition(Currlevel);
     }
 
     private void OnDisable()
     {
         OnPlayerDeath -= InitiateGameOver;
+
+        GetActivePlayer -= ActivatePlayer;
     }
 
-    
+
     public void InitiateGameOver()
     {
         ResetButton.image.color = Color.red;
@@ -83,25 +97,64 @@ public class GM : MonoBehaviour
 
         buttontext.color = Color.black;
 
+        ActivatePlayer(CurrPlayer);
+
         Time.timeScale = 1.0f;
 
-        CurrPlayer.ResetFunction();
+       
 
     }
 
-    public void LevelTransition(int LevelNum)
+    public Vector3 GetCurrentSpawner()
     {
+        Vector3 Spawner = Vector3.zero;
+
+        switch(Currlevel)
+        {
+            case Levels.One:
+            {
+                  Spawner = NewLevelsContainer["One"].CurrSpawner.gameObject.transform.position;
+                    Debug.Log("Level One Spawner Given");
+                break;
+            }
+            case Levels.Two:
+            {
+                    Spawner = NewLevelsContainer["Two"].CurrSpawner.gameObject.transform.position;
+                    Debug.Log("Level Two Spawner Given");
+                    break;
+            }
+            case Levels.Three:
+            {
+                    Spawner = NewLevelsContainer["Three"].CurrSpawner.gameObject.transform.position;
+                    Debug.Log("Level Three Spawner Given");
+                    break;
+            }
+
+
+               
+        }
+
+       return Spawner;
+
+    }
+
+    public void LevelTransition(Levels CurrLevel)
+    {
+        var CurrString = CurrLevel.ToString();
+        Debug.Log("Transition Level Functionality");
+        CurrCameraPosition = NewLevelsContainer[CurrString].CameraPosition;
+
+        CurrSpawner = NewLevelsContainer[CurrString].CurrSpawner;
         
     }
 
-    public void GetCurrentSpawner()
-    {
-        
-    }
+  
 
-    public void GetCurrentPlayer(PlayerObject aPlayer)
+    public void ActivatePlayer(PlayerObject aPlayer)
     {
-        CurrPlayer = aPlayer;
+        Debug.Log("Current Player Acquired");
+        aPlayer.gameObject.SetActive(true);
+       
     }
 }
 
