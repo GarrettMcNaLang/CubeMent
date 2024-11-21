@@ -52,7 +52,7 @@ public class VictoryTile : MonoBehaviour
         //Debug.Log("is this function activated");
         if(VCondition)
         {
-            Debug.Log("Activate Victory Condition");
+            GM.Instance.VictoryCondition();
         }
         else
         {

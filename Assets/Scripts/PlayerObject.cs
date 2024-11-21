@@ -71,7 +71,11 @@ public class PlayerObject : MonoBehaviour
 
     private void OnDisable()
     {
-        
+        CanPress = true;
+
+        Direction = Vector3.zero;
+
+        isStill = true;
         Debug.Log("Player should have returned to spawn");
     }
 

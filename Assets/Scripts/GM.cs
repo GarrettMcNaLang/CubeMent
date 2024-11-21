@@ -20,6 +20,8 @@ public class GM : MonoBehaviour
         set { _LevelsCompleted = value; }
     }
 
+    public int MaxNumLevels;
+
     [SerializeField]
     Converter ToConvert;
 
@@ -53,8 +55,6 @@ public class GM : MonoBehaviour
     public GameObject CurrCameraPosition;
 
     PlayerObject CurrPlayer;
-
-    GameObject CameraObj;
 
     public GameObject PlayerObjectPrefab;
     
@@ -150,7 +150,7 @@ public class GM : MonoBehaviour
 
         buttontext.color = Color.black;
 
-        ActivatePlayer(CurrPlayer);
+        BeginLevel();
 
         Time.timeScale = 1.0f;
 
@@ -158,15 +158,30 @@ public class GM : MonoBehaviour
 
     }
 
+    
+
+    public void VictoryCondition()
+    {
+        if(LevelsCompleted != MaxNumLevels)
+        {
+            NextLevelButton.gameObject.SetActive(true);
+            LevelsCompleted += 1;
+        }
+        else if(LevelsCompleted == MaxNumLevels) 
+        {
+            Debug.Log("Player has won game");
+        }
+    }
+
     public void BeginLevel()
     {
-        ActivatePlayer(CurrPlayer);
+        
 
         NewLevelsContainer[Currlevel.ToString()].CurrSpawner.SpawnerFunction(CurrPlayer);
         
-        CameraObj.transform.position = NewLevelsContainer[Currlevel.ToString()].CameraPosition.transform.position;
+        Camera.main.transform.position = NewLevelsContainer[Currlevel.ToString()].CameraPosition.transform.position;
 
-
+        ActivatePlayer(CurrPlayer);
 
 
     }
