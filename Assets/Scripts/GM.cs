@@ -7,10 +7,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-
+//using UnityEngine.UIElements;
 
 public class GM : MonoBehaviour
 {
+    private int _LevelsCompleted;
+
+    public int LevelsCompleted
+    {
+        get { return _LevelsCompleted; }
+
+        set { _LevelsCompleted = value; }
+    }
 
     [SerializeField]
     Converter ToConvert;
@@ -33,9 +41,11 @@ public class GM : MonoBehaviour
     public Button NextLevelButton;
 
     public enum Levels 
-    {One, Two, Three };
+    {One = 1, Two, Three };
 
     public Levels Currlevel;
+
+    public String FinalLevel;
 
     [HideInInspector]
     public PlayerSpawnSpace CurrSpawner;
@@ -44,7 +54,9 @@ public class GM : MonoBehaviour
 
     PlayerObject CurrPlayer;
 
-    public PlayerObject PlayerObjectPrefab;
+    GameObject CameraObj;
+
+    public GameObject PlayerObjectPrefab;
     
 
     private void Awake()
@@ -57,7 +69,12 @@ public class GM : MonoBehaviour
 
         NewLevelsContainer = ToConvert.ConvertToDictionaryLevels();
 
-        CurrPlayer = Instantiate(PlayerObjectPrefab);
+        CurrPlayer = Instantiate(PlayerObjectPrefab).GetComponent<PlayerObject>();
+
+        if(CurrPlayer != null)
+        {
+            Debug.Log("Player Exists");
+        }
 
         
     }
@@ -68,7 +85,7 @@ public class GM : MonoBehaviour
 
         GetActivePlayer += ActivatePlayer;
 
-        LevelTransition(Currlevel);
+       
     }
 
     private void OnDisable()
@@ -78,7 +95,43 @@ public class GM : MonoBehaviour
         GetActivePlayer -= ActivatePlayer;
     }
 
+    #region UI
+    public void ButtonActionOnClick(int Level)
+    {
+        switch ((Levels)Level)
+        {
+            case Levels.One:
+                Currlevel = Levels.One;
+                break;
 
+            case Levels.Two:
+                Currlevel = Levels.Two;
+                break;
+
+            case Levels.Three:
+                Currlevel = Levels.Three;
+                break;
+        }
+
+        LevelTransition(Currlevel);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ActivatePanel(GameObject panel)
+    {
+       panel.SetActive(true);
+    }
+
+    public void DeactivatePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
+    #endregion
     public void InitiateGameOver()
     {
         ResetButton.image.color = Color.red;
@@ -105,36 +158,16 @@ public class GM : MonoBehaviour
 
     }
 
-    public Vector3 GetCurrentSpawner()
+    public void BeginLevel()
     {
-        Vector3 Spawner = Vector3.zero;
+        ActivatePlayer(CurrPlayer);
 
-        switch(Currlevel)
-        {
-            case Levels.One:
-            {
-                  Spawner = NewLevelsContainer["One"].CurrSpawner.gameObject.transform.position;
-                    Debug.Log("Level One Spawner Given");
-                break;
-            }
-            case Levels.Two:
-            {
-                    Spawner = NewLevelsContainer["Two"].CurrSpawner.gameObject.transform.position;
-                    Debug.Log("Level Two Spawner Given");
-                    break;
-            }
-            case Levels.Three:
-            {
-                    Spawner = NewLevelsContainer["Three"].CurrSpawner.gameObject.transform.position;
-                    Debug.Log("Level Three Spawner Given");
-                    break;
-            }
+        NewLevelsContainer[Currlevel.ToString()].CurrSpawner.SpawnerFunction(CurrPlayer);
+        
+        CameraObj.transform.position = NewLevelsContainer[Currlevel.ToString()].CameraPosition.transform.position;
 
 
-               
-        }
 
-       return Spawner;
 
     }
 
@@ -146,6 +179,8 @@ public class GM : MonoBehaviour
 
         CurrSpawner = NewLevelsContainer[CurrString].CurrSpawner;
         
+
+        BeginLevel();
     }
 
   
@@ -156,6 +191,8 @@ public class GM : MonoBehaviour
         aPlayer.gameObject.SetActive(true);
        
     }
+
+   
 }
 
 [Serializable]

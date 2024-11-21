@@ -10,7 +10,7 @@ public class KillPlayerOnContact : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent<PlayerObject>(out PlayerObject player))
         {
-            player.ResetFunction();
+            player.gameObject.SetActive(false);
 
             GM.OnPlayerDeath();
 

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerObject : MonoBehaviour
 {
+    
 
     public static string VelocityResetTag = "StaticBorders";
 
@@ -52,7 +53,7 @@ public class PlayerObject : MonoBehaviour
 
         StopperDict = StopperDictionary.ConvertToDictionary();
 
-        
+        this.gameObject.SetActive(false);
     }
 
     void OnEnable()
@@ -61,7 +62,11 @@ public class PlayerObject : MonoBehaviour
 
         CanPress = true;
 
-        GM.GetActivePlayer(this);
+        Direction = Vector3.zero;
+
+        isStill = true;
+
+        //GM.GetActivePlayer(this);
     }
 
     private void OnDisable()
@@ -172,15 +177,7 @@ public class PlayerObject : MonoBehaviour
         StopperDict[EnableThis].SetActive(true);
     }
    
-    public void ResetFunction()
-    {
-        this.gameObject.SetActive(false);
-        Direction = Vector2.zero;
-        CanPress = true;
-        isStill = true;
-        var spawner = GM.Instance.GetCurrentSpawner();
-        this.gameObject.transform.position = spawner;
-    }
+   
 
 }
 [Serializable]
