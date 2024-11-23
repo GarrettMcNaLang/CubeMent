@@ -17,7 +17,14 @@ public class GM : MonoBehaviour
     {
         get { return _LevelsCompleted; }
 
-        set { _LevelsCompleted = value; }
+        set { _LevelsCompleted = value;
+
+            if (_LevelsCompleted == MaxNumLevels)
+            {
+                VictoryPanel.gameObject.SetActive(true);
+            }
+            Debug.Log(_LevelsCompleted);
+        }
     }
 
     public int MaxNumLevels;
@@ -33,6 +40,10 @@ public class GM : MonoBehaviour
 
     public static GM Instance;
 
+    public AudioSource VictorySound;
+
+    public AudioSource Music;
+
 
     public static Action OnPlayerDeath;
 
@@ -41,6 +52,8 @@ public class GM : MonoBehaviour
     public Button ResetButton;
 
     public Button NextLevelButton;
+
+    public GameObject VictoryPanel;
 
     public enum Levels 
     {One = 1, Two, Three };
@@ -130,6 +143,17 @@ public class GM : MonoBehaviour
     {
         panel.SetActive(false);
     }
+    
+    public void LevelCompleted()
+    {
+        LevelsCompleted += 1;
+        VictorySound.Play();
+    }
+
+    public void ResetLevelsCompleted()
+    {
+        LevelsCompleted = 0;
+    }
 
     #endregion
     public void InitiateGameOver()
@@ -164,13 +188,11 @@ public class GM : MonoBehaviour
     {
         if(LevelsCompleted != MaxNumLevels)
         {
+           
             NextLevelButton.gameObject.SetActive(true);
-            LevelsCompleted += 1;
+            
         }
-        else if(LevelsCompleted == MaxNumLevels) 
-        {
-            Debug.Log("Player has won game");
-        }
+       
     }
 
     public void BeginLevel()

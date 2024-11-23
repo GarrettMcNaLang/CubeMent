@@ -6,7 +6,10 @@ using UnityEngine;
 
 public class PlayerObject : MonoBehaviour
 {
-    
+    public bool LeftLock;
+    public bool RightLock;
+    public bool UpLock;
+    public bool DownLock;
 
     public static string VelocityResetTag = "StaticBorders";
 
@@ -31,7 +34,7 @@ public class PlayerObject : MonoBehaviour
    
 
     [SerializeField]
-    Dictionary<string, GameObject> StopperDict;
+    Dictionary<string, StopPlayerScript> StopperDict;
     
   
 
@@ -84,22 +87,25 @@ public class PlayerObject : MonoBehaviour
     {
         if (CanPress)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W) && !UpLock)
             {
                 DetermineDirection(Controls.UP);
-                
+                StopperDict["Up"].willStop = true;
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.S) && !DownLock)
             {
                 DetermineDirection(Controls.DOWN);
+                StopperDict["Down"].willStop = true;
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyCode.A) && !LeftLock)
             {
                 DetermineDirection(Controls.LEFT);
+                StopperDict["Left"].willStop = true;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.D) && !RightLock)
             {
                 DetermineDirection(Controls.RIGHT);
+                StopperDict["Right"].willStop = true;
             }
 
             
@@ -114,6 +120,8 @@ public class PlayerObject : MonoBehaviour
        
 
     }
+
+    
 
     void FixedUpdate()
     {
@@ -140,9 +148,9 @@ public class PlayerObject : MonoBehaviour
         {
             case Controls.UP:
                 {
-
+                    
                     Direction = Vector2.up * PlayerSpeed;
-                    DisableExceptOne("Up");
+                    
                     break;
                     
                     
@@ -150,14 +158,14 @@ public class PlayerObject : MonoBehaviour
             case Controls.DOWN:
                 {
                     Direction = Vector2.down * PlayerSpeed;
-                    DisableExceptOne("Down");
+                    
                     break;
                    
                 }
             case Controls.LEFT:
                 {
                     Direction = Vector2.left * PlayerSpeed;
-                    DisableExceptOne("Left");
+                   
                     break;
 
                     
@@ -165,7 +173,7 @@ public class PlayerObject : MonoBehaviour
             case Controls.RIGHT:
                 {
                     Direction = Vector2.right * PlayerSpeed;
-                    DisableExceptOne("Right");
+                   
                     break;
                    
                 }
@@ -175,11 +183,11 @@ public class PlayerObject : MonoBehaviour
         }
     }
 
-    public void DisableExceptOne(String EnableThis) 
-    {
-        Debug.LogFormat("Trigger {0} Activated", EnableThis);
-        StopperDict[EnableThis].SetActive(true);
-    }
+    //public void DisableExceptOne(String EnableThis) 
+    //{
+    //    Debug.LogFormat("Trigger {0} Activated", EnableThis);
+    //    StopperDict[EnableThis].SetActive(true);
+    //}
    
    
 
@@ -190,13 +198,15 @@ public class StopperDic
     [SerializeField]
     public StopperObj[] Stoppers;
 
-    public Dictionary<string, GameObject> ConvertToDictionary()
+    public Dictionary<string, StopPlayerScript> ConvertToDictionary()
     {
-        Dictionary<string, GameObject> newDic = new Dictionary<string, GameObject>();
+        Dictionary<string, StopPlayerScript> newDic = new Dictionary<string, StopPlayerScript>();
 
         foreach(var Stp in Stoppers)
         {
-            newDic.Add(Stp.name, Stp.Stopper);
+            
+            var StopperScript = Stp.Stopper.GetComponent<StopPlayerScript>();
+            newDic.Add(Stp.name, StopperScript);
         }
 
         return newDic;

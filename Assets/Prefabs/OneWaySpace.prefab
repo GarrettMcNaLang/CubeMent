@@ -70,8 +70,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.020247221, y: 0.038423777}
-  - {x: 0.021448672, y: -0.95822525}
+  - {x: 0.020247221, y: 0.88400006}
+  - {x: 0.025345325, y: 0.03152752}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -158,8 +158,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.0047090054, y: 0.9001701}
-  - {x: 0.011444271, y: -0.018704176}
+  - {x: 0.0047090054, y: 0.09245896}
+  - {x: 0.007561058, y: -0.43420935}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -246,8 +246,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.0056284294, y: 0.010088262}
-  - {x: -0.0046298876, y: 1.0194273}
+  - {x: -0.009655898, y: -0.85583097}
+  - {x: -0.012684962, y: 0.15350819}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   DOWN: {fileID: 4932829813906973509}
   LEFT: {fileID: 4290510907726196957}
   RIGHT: {fileID: 1926775199420604205}
-  SetDirection: 0
+  SetDirection: 2
   spriteRenderer: {fileID: 7862795972545609803}
 --- !u!1 &7229162375423645860
 GameObject:
@@ -464,8 +464,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.025276333, y: 0.009066042}
-  - {x: 0.02428621, y: -1.0058424}
+  - {x: 0.021379936, y: 0.6481191}
+  - {x: 0.02428632, y: -0.09012598}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

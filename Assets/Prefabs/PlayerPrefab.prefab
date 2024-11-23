@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &437700004089616990
 Transform:
   m_ObjectHideFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2b29bc27ffcef45a3c6526a159c161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 3
 --- !u!68 &5901221880375961577
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -105,7 +106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &663478545995421874
 Transform:
   m_ObjectHideFlags: 0
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2b29bc27ffcef45a3c6526a159c161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 2
 --- !u!68 &7585055906634576140
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +174,7 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.01885387, y: -0.8179493}
   - {x: -0.019637957, y: 0.79870313}
-  - {x: 0.5, y: 0}
+  - {x: -0.023222327, y: 0.9162496}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -342,6 +344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1cbdfdf287e5b46a0208ebd3c0e0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftLock: 0
+  RightLock: 0
+  UpLock: 0
+  DownLock: 0
   PlayerSpeed: 20
   Direction: {x: 0, y: 0}
   isStill: 0
@@ -391,8 +397,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0021733344, y: -0.0014669299}
-  m_Radius: 0.48359817
+  m_Offset: {x: 0.0018841326, y: -0.00023806095}
+  m_Radius: 0.49775484
 --- !u!1 &8527168694497470884
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5530396725640945097
 Transform:
   m_ObjectHideFlags: 0
@@ -438,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2b29bc27ffcef45a3c6526a159c161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 1
 --- !u!68 &5359361916007459766
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -498,7 +505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &542622984788479403
 Transform:
   m_ObjectHideFlags: 0
@@ -526,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2b29bc27ffcef45a3c6526a159c161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  side: 0
 --- !u!68 &8628818819174007914
 EdgeCollider2D:
   m_ObjectHideFlags: 0

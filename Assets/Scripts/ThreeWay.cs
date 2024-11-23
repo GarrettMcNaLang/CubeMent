@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ThreeWay : OneWayLogicScript
 {
+    public GameObject spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,30 +22,33 @@ public class ThreeWay : OneWayLogicScript
             case Direction.Up:
                 {
                     Debug.Log("Player Should be moving Down");
-                    DOWN.enabled = false;
                     
+                    UP.enabled = false;
+                    
+                    spriteRenderer.transform.Rotate(Vector3.forward * 0f);
                     break;
                 }
             case Direction.Down:
                 {
                     Debug.Log("Player should be moving UP");
-                    UP.enabled = false;
-                    
+                    DOWN.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * 180f);
                     break;
                 }
             case Direction.Left:
                 {
                     Debug.Log("Player should be moving Right");
                    
-                    RIGHT.enabled = false;
+                    LEFT.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * 90f);
                     break;
                 }
             case Direction.Right:
                 {
                     Debug.Log("Player should be moving Left");
                    
-                    LEFT.enabled = false;
-                   
+                    RIGHT.enabled = false;
+                    spriteRenderer.transform.Rotate(Vector3.forward * -90f);
                     break;
                 }
         }
